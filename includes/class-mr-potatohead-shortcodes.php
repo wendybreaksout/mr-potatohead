@@ -35,18 +35,20 @@ class Mr_Potatohead_Shortcodes {
 	public function mr_potatohead ( $atts ) {
 
 		/** @var $img string */
+		/** @var $width string */
+		/** @var $height string */
 
-		$atts_actual = shortcode_atts(
-			array(
-				'img'  =>  MPH_PLUGIN_URL . '/public/images/potato.png',
-				'width' => 400,
-				'height' => 400
-			),
-			$atts );
+		$defaults = array(
+			'img'  =>  MPH_PLUGIN_URL . '/public/images/potato.png',
+			'width' => 400,
+			'height' => 400
+		);
+
+		$atts_actual = shortcode_atts( $defaults, $atts );
 
 		extract( $atts_actual );
 
-		$output = '<img src="' . $img . '">';
+		$output = '<img src="' . $img . '" width="' . $width . '" height="' . $height . '">';
 		return $output;
 
 	}

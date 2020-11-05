@@ -31,6 +31,10 @@ class Mr_Potatohead_Activator {
 	 */
 	public static function activate() {
 		// Set default configuration options.
+		if ( current_user_can( 'activate_plugins') ) {
+			$settings = new Mr_Potatohead_Settings();
+			$settings->add_option_defaults();
+		}
 	}
 
 }

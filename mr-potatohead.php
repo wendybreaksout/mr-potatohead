@@ -38,7 +38,9 @@ if ( ! defined( 'WPINC' ) ) {
 define( 'MR_POTATOHEAD_VERSION', '1.0.0' );
 
 define( 'MPH_PLUGIN_URL', plugin_dir_url( __FILE__ ));
+define( 'MPH_OPTION_NAME', 'mr_potatohead');
 
+define( 'MPH_TEXT_DOMAIN', 'mr_potatohead');
 /**
  * The code that runs during plugin activation.
  * This action is documented in includes/class-mr-potatohead-activator.php

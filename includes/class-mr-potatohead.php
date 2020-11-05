@@ -127,6 +127,11 @@ class Mr_Potatohead {
 
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-mr-potatohead-shortcodes.php';
 
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-mr-potatohead-settings.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-mr-potatohead-menu-pages.php';
+
+
+
 
 		$this->loader = new Mr_Potatohead_Loader();
 
@@ -162,6 +167,19 @@ class Mr_Potatohead {
 
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
+
+
+		$mph_settings = new Mr_Potatohead_Settings();
+		$mph_menu_pages = new Mr_Potatohead_Menu_Pages();
+
+		if ( is_admin() ) {
+			$this->loader->add_action( 'admin_menu', $mph_settings, 'add_mph_options_page' );
+			$this->loader->add_action( 'admin_init', $mph_settings, 'settings_init' );
+			$this->loader->add_action( 'admin_menu', $mph_menu_pages, 'admin_menu_pages' );
+
+
+		}
+
 
 	}
 

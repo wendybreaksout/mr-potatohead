@@ -35,7 +35,7 @@ class Mr_Potatohead_i18n {
 	public function load_plugin_textdomain() {
 
 		load_plugin_textdomain(
-			'mr-potatohead',
+			MPH_TEXT_DOMAIN,
 			false,
 			dirname( dirname( plugin_basename( __FILE__ ) ) ) . '/languages/'
 		);
