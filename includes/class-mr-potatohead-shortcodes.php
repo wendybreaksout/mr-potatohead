@@ -38,10 +38,13 @@ class Mr_Potatohead_Shortcodes {
 		/** @var $width string */
 		/** @var $height string */
 
+		$options = get_option( MPH_OPTION_NAME);
+
+
 		$defaults = array(
-			'img'  =>  MPH_PLUGIN_URL . '/public/images/potato.png',
-			'width' => 400,
-			'height' => 400
+			'img'  =>  $options['img_url'],
+			'width' => $options['width'],
+			'height' => $options['height'],
 		);
 
 		$atts_actual = shortcode_atts( $defaults, $atts );

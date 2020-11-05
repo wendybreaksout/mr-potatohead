@@ -36,7 +36,7 @@ class Mr_Potatohead_Settings {
 
 			$options = array(
 				'version' => $this->version,
-				'img_url' => '',
+				'img_url' => MPH_PLUGIN_URL . 'public/images/potato.png',
 				'width'   => 400,
 				'height'  => 400,
 				'remove_data_on_uninstall' => 'false'
@@ -93,7 +93,7 @@ class Mr_Potatohead_Settings {
 		);
 
 		add_settings_field(
-			'mph_remove_data_at_uninstall',
+			'remove_data_on_uninstall',
 			__( 'Remove plugin posts, settings, and other data on deactivation.', MPH_TEXT_DOMAIN ),
 			array($this, 'mph_remove_data_render'),
 			'mph-settings-page',
@@ -195,7 +195,7 @@ class Mr_Potatohead_Settings {
 			$new_input['width'] = intval( $input['width'] );
 
 		if( isset( $input['height'] ) )
-			$new_input['width'] = intval( $input['height'] );
+			$new_input['height'] = intval( $input['height'] );
 
 
 		if( isset( $input['img_url'] ) )
@@ -215,7 +215,7 @@ class Mr_Potatohead_Settings {
 	public function width_render() {
 		$options = get_option( $this->options_name );
 		?>
-		<input type="text" size="4" name="mph_settings[width]"
+		<input type="text" size="4" name="mr_potatohead[width]"
 		       value="<?php echo $options['width']; ?>">
 		<?php
 	}
@@ -224,7 +224,7 @@ class Mr_Potatohead_Settings {
 	public function height_render() {
 		$options = get_option( $this->options_name );
 		?>
-		<input type="text" size="4" name="mph_settings[height]"
+		<input type="text" size="4" name="mr_potatohead[height]"
 		       value="<?php echo $options['height']; ?>">
 		<?php
 	}
@@ -233,7 +233,7 @@ class Mr_Potatohead_Settings {
 	public function img_url_render() {
 		$options = get_option( $this->options_name );
 		?>
-		<input type="text" size="100" name="mph_settings[img_url]"
+		<input type="text" size="100" name="mr_potatohead[img_url]"
 		       value="<?php echo $options['img_url']; ?>">
 		<?php
 
@@ -242,7 +242,7 @@ class Mr_Potatohead_Settings {
 	public function mph_remove_data_render() {
 		$options = get_option( $this->options_name );
 		?>
-		<input id="remove_mph_data_input" type="checkbox" name="mph_settings[mph_remove_data_on_uninstall]" <?php checked( $options['remove_data_on_uninstall'], 1 ); ?> value='1'>
+		<input id="remove_mph_data_input" type="checkbox" name="mr_potatohead[remove_data_on_uninstall]" <?php checked( $options['remove_data_on_uninstall'], 1 ); ?> value='1'>
 		<br><label for="remove_mph_data_input"><em>Leave this unchecked unless you really want to remove the data you have stored using this plugin.</em></label>
 		<?php
 	}
